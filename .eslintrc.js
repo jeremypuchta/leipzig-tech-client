@@ -34,5 +34,6 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'react/jsx-props-no-spreading': 'off',
   },
 }

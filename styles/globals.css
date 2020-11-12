@@ -3,3 +3,8 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@font-face {
+  font-family: 'IBM Plex Mono', monospace;
+  src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300;400;500;600;700&display=swap');
+}
