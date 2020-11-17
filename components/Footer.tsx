@@ -2,15 +2,12 @@ import React from 'react'
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="w-full h-10 bg-gray-300 font-mono flex justify-center items-center">
-      <a className="text-lg font-bold mr-10 px-2 hover:bg-gray-400" href="/">
-        Impressum
+    <footer className="flex justify-center py-8 px-4 font-mono text-md">
+      <a className="mx-4" href="/">
+        /legal
       </a>
-      <a className="text-lg font-bold mr-10 px-2 hover:bg-gray-400" href="/">
-        Datenschutz
-      </a>
-      <a className="text-lg font-bold mr-10 px-2 hover:bg-gray-400" href="/">
-        Kontakt
+      <a className="mx-4" href="/">
+        /privacy
       </a>
     </footer>
   )
