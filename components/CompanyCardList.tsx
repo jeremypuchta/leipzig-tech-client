@@ -8,7 +8,7 @@ const CompanyCardList = ({
   companies: Company[]
 }): JSX.Element => {
   return (
-    <div className="min-h-screen flex flex-col items-center mt-16">
+    <div className="p-4">
       {companies.map((c) => (
         <CompanyCard key={c.id} company={c} />
       ))}

@@ -4,11 +4,9 @@ import Header from './Header'
 
 const Layout = ({ children }: { children: JSX.Element }): JSX.Element => {
   return (
-    <div className="flex flex-col justify-between">
+    <div className="container max-w-screen-xl m-auto">
       <Header />
-
-      <main className="mb-auto">{children}</main>
-
+      <main>{children}</main>
       <Footer />
     </div>
   )
