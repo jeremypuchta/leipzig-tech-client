@@ -7,7 +7,10 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: [],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: ['components/**/*.tsx', 'pages/**/*.tsx'],
+  },
   theme: {
     extend: {
       fontFamily: {
