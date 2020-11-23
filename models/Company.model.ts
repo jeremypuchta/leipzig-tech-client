@@ -1,3 +1,5 @@
+import { LatLngExpression } from 'leaflet'
+
 export interface Company {
   id: string
   name: string
@@ -5,4 +7,5 @@ export interface Company {
   logo?: string
   description?: string
   address?: string
+  latlng?: LatLngExpression
 }

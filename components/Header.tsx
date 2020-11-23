@@ -7,16 +7,28 @@ const Header = (): JSX.Element => {
       <h1 className="text-md font-semibold sm:text-lg lg:text-2xl">
         {'<leipzigtech />'}
       </h1>
-      <Link href="/about">
-        <a>
-          <button
-            type="button"
-            className="text-md hover:text-blue-700 sm:text-lg"
-          >
-            /about
-          </button>
-        </a>
-      </Link>
+      <div>
+        <Link href="/companies">
+          <a className="mr-3">
+            <button
+              type="button"
+              className="text-md hover:text-blue-700 sm:text-lg"
+            >
+              /companies
+            </button>
+          </a>
+        </Link>
+        <Link href="/about">
+          <a>
+            <button
+              type="button"
+              className="text-md hover:text-blue-700 sm:text-lg"
+            >
+              /about
+            </button>
+          </a>
+        </Link>
+      </div>
     </header>
   )
 }
