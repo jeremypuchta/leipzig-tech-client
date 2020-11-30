@@ -10,7 +10,7 @@ const CompanyCardList = ({
   onItemClick: (id: string) => void
 }): JSX.Element => {
   return (
-    <div className="p-4">
+    <div className="px-4">
       {companies.map((c) => (
         <CompanyCard key={c.id} company={c} onClick={onItemClick} />
       ))}

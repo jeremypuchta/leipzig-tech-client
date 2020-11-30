@@ -16,6 +16,9 @@ module.exports = {
       fontFamily: {
         mono: ['IBM Plex Mono', ...defaultTheme.fontFamily.mono],
       },
+      height: {
+        content: 'calc(100vh - 64px - 88px)',
+      },
     },
   },
   variants: {},

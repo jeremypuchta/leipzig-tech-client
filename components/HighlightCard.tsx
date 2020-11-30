@@ -9,7 +9,7 @@ export default function HighlightCard({
   company: Company
 }): JSX.Element {
   return (
-    <Link href="#">
+    <Link href="/">
       <a>
         <div className="flex p-4 my-4 shadow-md rounded-md transform hover:scale-105 duration-300">
           <div className="flex items-center">

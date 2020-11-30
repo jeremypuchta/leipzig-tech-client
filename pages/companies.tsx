@@ -44,11 +44,13 @@ export default function CompaniesPage(): JSX.Element {
   }
 
   return (
-    <div>
-      <div className="w-full h-96 p-4">
+    <div className="container h-content flex">
+      <div className="w-full h-full overflow-auto">
+        <CompanyCardList companies={companies} onItemClick={handleItemClick} />
+      </div>
+      <div className="w-full h-full px-4 custom-scroll">
         <LocationMap companies={companies} selected={selected} />
       </div>
-      <CompanyCardList companies={companies} onItemClick={handleItemClick} />
     </div>
   )
 }

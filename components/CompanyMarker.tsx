@@ -17,6 +17,13 @@ const CompanyMarker = ({
       markerRef.current.openPopup()
     }
   }, [openPopup])
+
+  // possibility to customize the icon
+  // const icon = L.divIcon({
+  //   className: 'company-icon',
+  //   html: `<div style="height: 20px; width: 100px; background-color: red; text-align: center; transform: translateX(-50%)">${company.name}</div>`,
+  // })
+
   return (
     <Marker ref={markerRef} key={company.id} position={company.latlng}>
       <Popup>{company.name}</Popup>

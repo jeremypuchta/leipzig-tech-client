@@ -1,4 +1,3 @@
-import { latLngBounds } from 'leaflet'
 import React from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
@@ -12,19 +11,13 @@ const LocationMap = ({
   companies: Company[]
   selected: string
 }): JSX.Element => {
-  const bounds = latLngBounds([])
-  companies.forEach((c) => {
-    if (c.latlng) {
-      bounds.extend(c.latlng)
-    }
-  })
-
   return (
-    <div>
+    <div className="h-full">
       <MapContainer
-        bounds={bounds}
+        center={[51.343479, 12.387772]}
+        zoom={12}
         scrollWheelZoom={false}
-        style={{ width: '100%', height: '500px' }}
+        style={{ width: '100%', height: '100%' }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
