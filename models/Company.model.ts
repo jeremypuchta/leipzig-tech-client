@@ -7,5 +7,5 @@ export interface Company {
   logo?: string
   description?: string
   address?: string
-  latlng?: LatLngExpression
+  latlng: LatLngExpression
 }

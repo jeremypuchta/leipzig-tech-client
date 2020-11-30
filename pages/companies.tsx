@@ -26,6 +26,7 @@ function getRandomLocation(): LatLngExpression {
 
 export default function CompaniesPage(): JSX.Element {
   const [companies, setCompanies] = useState<Company[]>([])
+  const [selected, setSelected] = useState<string>('')
 
   useEffect(() => {
     setCompanies(
@@ -38,12 +39,16 @@ export default function CompaniesPage(): JSX.Element {
     )
   }, [])
 
+  const handleItemClick = (id: string) => {
+    setSelected(id)
+  }
+
   return (
     <div>
       <div className="w-full h-96 p-4">
-        <LocationMap companies={companies} />
+        <LocationMap companies={companies} selected={selected} />
       </div>
-      <CompanyCardList companies={companies} />
+      <CompanyCardList companies={companies} onItemClick={handleItemClick} />
     </div>
   )
 }

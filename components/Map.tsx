@@ -1,21 +1,17 @@
 import { latLngBounds } from 'leaflet'
 import React from 'react'
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
 
 import { Company } from '../models/Company.model'
+import PointsLayer from './PointsLayer'
 
-const LocationMap = ({ companies }: { companies: Company[] }): JSX.Element => {
-  const getMarker = (company: Company) => {
-    if (company.latlng) {
-      return (
-        <Marker key={company.id} position={company.latlng}>
-          <Popup>{company.name}</Popup>
-        </Marker>
-      )
-    }
-    return null
-  }
-
+const LocationMap = ({
+  companies,
+  selected,
+}: {
+  companies: Company[]
+  selected: string
+}): JSX.Element => {
   const bounds = latLngBounds([])
   companies.forEach((c) => {
     if (c.latlng) {
@@ -24,17 +20,19 @@ const LocationMap = ({ companies }: { companies: Company[] }): JSX.Element => {
   })
 
   return (
-    <MapContainer
-      bounds={bounds}
-      scrollWheelZoom={false}
-      style={{ width: '100%', height: '100%' }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {companies.map((company) => getMarker(company))}
-    </MapContainer>
+    <div>
+      <MapContainer
+        bounds={bounds}
+        scrollWheelZoom={false}
+        style={{ width: '100%', height: '500px' }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <PointsLayer selectedId={selected} companies={companies} />
+      </MapContainer>
+    </div>
   )
 }
 
