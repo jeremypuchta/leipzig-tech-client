@@ -3,18 +3,18 @@ import Link from 'next/link'
 
 const Header = (): JSX.Element => {
   return (
-    <header className="flex justify-between p-4 font-mono items-center">
+    <header className="flex justify-between p-4 items-center max-w-5xl mx-auto">
       <h1 className="text-md font-semibold sm:text-lg lg:text-2xl">
-        {'<leipzigtech />'}
+        leipzigtech.
       </h1>
       <div>
         <Link href="/companies">
           <a className="mr-3">
             <button
               type="button"
-              className="text-md hover:text-blue-700 sm:text-lg"
+              className="px-4 py-2 rounded shadow text-black hover:bg-blue-800 hover:text-white"
             >
-              /companies
+              companies
             </button>
           </a>
         </Link>
@@ -22,9 +22,9 @@ const Header = (): JSX.Element => {
           <a>
             <button
               type="button"
-              className="text-md hover:text-blue-700 sm:text-lg"
+              className="px-4 py-2 rounded shadow text-black hover:bg-blue-800 hover:text-white"
             >
-              /about
+              about
             </button>
           </a>
         </Link>

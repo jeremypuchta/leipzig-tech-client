@@ -4,9 +4,11 @@ import Header from './Header'
 
 const Layout = ({ children }: { children: JSX.Element }): JSX.Element => {
   return (
-    <div className="container max-w-screen-xl m-auto">
+    <div>
       <Header />
-      <main>{children}</main>
+      <main className="mt-10 px-4 max-w-5xl mx-auto min-h-screen">
+        {children}
+      </main>
       <Footer />
     </div>
   )
