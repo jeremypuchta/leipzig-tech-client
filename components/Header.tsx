@@ -4,9 +4,13 @@ import Link from 'next/link'
 const Header = (): JSX.Element => {
   return (
     <header className="flex justify-between p-4 items-center max-w-5xl mx-auto">
-      <h1 className="text-md font-semibold sm:text-lg lg:text-2xl">
-        leipzigtech.
-      </h1>
+      <Link href="/">
+        <a>
+          <h1 className="text-md font-semibold sm:text-lg lg:text-2xl">
+            leipzigtech.
+          </h1>
+        </a>
+      </Link>
       <div>
         <Link href="/companies">
           <a className="mr-3">

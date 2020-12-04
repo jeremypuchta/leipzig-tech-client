@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import faker from 'faker/locale/de'
+import HighlightCard from '../components/HighlightCard'
+
+import { Company } from '../models/Company.model'
 
 export default function Index(): JSX.Element {
+  const [companies, setCompanies] = useState<Company[]>([])
+
+  useEffect(() => {
+    setCompanies(
+      Array.from({ length: 5 }, (_, i) => ({
+        id: `${i}`,
+        name: `${faker.company.companyName()} ${faker.company.companySuffix()}`,
+        department: `${faker.commerce.department()}`,
+        logo: `${faker.image.business(48, 48)}`,
+        address: `${faker.address.streetAddress(true)}`,
+      }))
+    )
+  }, [])
+
   return (
     <div>
       <div className="text-center">
@@ -23,64 +40,13 @@ export default function Index(): JSX.Element {
         </div>
       </div>
       <div className="mb-4">
-        <h3 className="mt-3 text-2xl font-bold text-center">
-          Explore 100+ tech companies in Leipzig
+        <h3 className="my-3 text-2xl font-bold text-center">
+          Let's welcome our newest platform members!
         </h3>
-        <section className="text-left">
-          <Link href="#">
-            <a>
-              <div className="flex flex-row rounded shadow-md p-8 my-2">
-                <Image
-                  src="/leipzig-wappen.png"
-                  alt="leipzig wappen"
-                  width={45}
-                  height={50}
-                />
-                <div className="ml-4">
-                  <p className="text-gray-900 font-semibold">
-                    Software Engineer at ABC
-                  </p>
-                  <p className="text-gray-500 text-sm">Address</p>
-                </div>
-              </div>
-            </a>
-          </Link>
-          <Link href="#">
-            <a>
-              <div className="flex flex-row rounded shadow-md p-8 my-2">
-                <Image
-                  src="/leipzig-wappen.png"
-                  alt="leipzig wappen"
-                  width={45}
-                  height={50}
-                />
-                <div className="ml-4">
-                  <p className="text-gray-900 font-semibold">
-                    Software Engineer at ABC
-                  </p>
-                  <p className="text-gray-500 text-sm">Address</p>
-                </div>
-              </div>
-            </a>
-          </Link>
-          <Link href="#">
-            <a>
-              <div className="flex flex-row rounded shadow-md p-8 my-2">
-                <Image
-                  src="/leipzig-wappen.png"
-                  alt="leipzig wappen"
-                  width={45}
-                  height={50}
-                />
-                <div className="ml-4">
-                  <p className="text-gray-900 font-semibold">
-                    Software Engineer at ABC
-                  </p>
-                  <p className="text-gray-500 text-sm">Address</p>
-                </div>
-              </div>
-            </a>
-          </Link>
+        <section className="mt-4">
+          {companies.map((company) => (
+            <HighlightCard key={company.id} company={company} />
+          ))}
         </section>
       </div>
     </div>
