@@ -10,7 +10,6 @@ const CompanyMarker = ({
   company: Company
   openPopup: boolean
 }): JSX.Element => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const markerRef = useRef<any>(null)
   useEffect(() => {
     if (markerRef && markerRef.current && openPopup) {
@@ -25,7 +24,11 @@ const CompanyMarker = ({
   // })
 
   return (
-    <Marker ref={markerRef} key={company.id} position={company.latlng}>
+    <Marker
+      ref={markerRef}
+      key={company.id}
+      position={[company.latitude, company.longitude]}
+    >
       <Popup>{company.name}</Popup>
     </Marker>
   )

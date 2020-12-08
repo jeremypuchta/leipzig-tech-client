@@ -6,7 +6,7 @@ const CompanyCard = ({
   onClick,
 }: {
   company: Company
-  onClick: (id: string) => void
+  onClick: (id: number) => void
 }): JSX.Element => {
   return (
     <div
@@ -20,7 +20,7 @@ const CompanyCard = ({
         <h2 className="text-md font-semibold sm:text-lg lg:text-2xl">
           {company.name}
         </h2>
-        <p className="text-md">{company.department}</p>
+        <p className="text-md">{company.sector}</p>
       </div>
     </div>
   )

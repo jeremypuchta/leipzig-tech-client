@@ -9,7 +9,7 @@ const LocationMap = ({
   selected,
 }: {
   companies: Company[]
-  selected: string
+  selected: number
 }): JSX.Element => {
   return (
     <div className="h-full">

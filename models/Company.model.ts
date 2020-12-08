@@ -1,11 +1,18 @@
-import { LatLngExpression } from 'leaflet'
-
 export interface Company {
-  id: string
+  id: number
+  ref: string
+  source: string
   name: string
-  department: string
+  sector: string
+  address: string
+  plz: string
+  city: string
+  phonenumber: string
+  website: string
+  email: string
+  create_at: Date
+  updated_at: Date
   logo?: string
-  description?: string
-  address?: string
-  latlng: LatLngExpression
+  latitude: number
+  longitude: number
 }
