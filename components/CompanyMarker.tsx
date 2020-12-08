@@ -1,0 +1,34 @@
+import React, { useEffect, useRef } from 'react'
+import { Marker, Popup } from 'react-leaflet'
+
+import { Company } from '../models/Company.model'
+
+const CompanyMarker = ({
+  company,
+  openPopup,
+}: {
+  company: Company
+  openPopup: boolean
+}): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const markerRef = useRef<any>(null)
+  useEffect(() => {
+    if (markerRef && markerRef.current && openPopup) {
+      markerRef.current.openPopup()
+    }
+  }, [openPopup])
+
+  // possibility to customize the icon
+  // const icon = L.divIcon({
+  //   className: 'company-icon',
+  //   html: `<div style="height: 20px; width: 100px; background-color: red; text-align: center; transform: translateX(-50%)">${company.name}</div>`,
+  // })
+
+  return (
+    <Marker ref={markerRef} key={company.id} position={company.latlng}>
+      <Popup>{company.name}</Popup>
+    </Marker>
+  )
+}
+
+export default CompanyMarker

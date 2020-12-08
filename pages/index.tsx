@@ -16,6 +16,7 @@ export default function Index(): JSX.Element {
         department: `${faker.commerce.department()}`,
         logo: `${faker.image.business(48, 48)}`,
         address: `${faker.address.streetAddress(true)}`,
+        latlng: { lat: 0, lng: 0 },
       }))
     )
   }, [])
@@ -41,7 +42,7 @@ export default function Index(): JSX.Element {
       </div>
       <div className="mb-4">
         <h3 className="my-3 text-2xl font-bold text-center">
-          Let's welcome our newest platform members!
+          Let&apos;s welcome our newest platform members!
         </h3>
         <section className="mt-4">
           {companies.map((company) => (
