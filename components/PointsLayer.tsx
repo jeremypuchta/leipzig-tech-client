@@ -8,7 +8,7 @@ const PointsLayer = ({
   selectedId,
 }: {
   companies: Company[]
-  selectedId: string
+  selectedId: number
 }): JSX.Element => {
   return (
     <>

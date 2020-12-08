@@ -1,7 +1,7 @@
-import faker from 'faker/locale/de'
-import { LatLngExpression } from 'leaflet'
+import axios from 'axios'
+import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import CompanyCardList from '../components/CompanyCardList'
 import { Company } from '../models/Company.model'
@@ -10,36 +10,14 @@ const LocationMap = dynamic(() => import('../components/Map'), {
   ssr: false,
 })
 
-function getRandomBetween(min: number, max: number) {
-  return Math.random() * (max - min) + min
-}
+const CompaniesPage = ({
+  companies,
+}: {
+  companies: Company[]
+}): JSX.Element => {
+  const [selected, setSelected] = useState<number>(0)
 
-function getRandomLocation(): LatLngExpression {
-  // center of Leipzig
-  const middlePoint = { lat: 51.33962, lng: 12.37129 }
-  const diff = 0.05
-  return {
-    lat: getRandomBetween(middlePoint.lat - diff, middlePoint.lat + diff),
-    lng: getRandomBetween(middlePoint.lng - diff, middlePoint.lng + diff),
-  }
-}
-
-export default function CompaniesPage(): JSX.Element {
-  const [companies, setCompanies] = useState<Company[]>([])
-  const [selected, setSelected] = useState<string>('')
-
-  useEffect(() => {
-    setCompanies(
-      Array.from({ length: 10 }, (_, i) => ({
-        id: `${i}`,
-        name: `${faker.company.companyName()} ${faker.company.companySuffix()}`,
-        department: `${faker.commerce.department()}`,
-        latlng: getRandomLocation(),
-      }))
-    )
-  }, [])
-
-  const handleItemClick = (id: string) => {
+  const handleItemClick = (id: number) => {
     setSelected(id)
   }
 
@@ -53,4 +31,18 @@ export default function CompaniesPage(): JSX.Element {
       </div>
     </div>
   )
+}
+export default CompaniesPage
+
+export const getServerSideProps: GetServerSideProps<{
+  companies: Company[]
+}> = async () => {
+  const res = await axios.get(`${process.env.BASE_API_URL}/companies`)
+  const companies = (await res.data).slice(0, 30)
+
+  return {
+    props: {
+      companies,
+    },
+  }
 }

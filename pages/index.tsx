@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
+import axios from 'axios'
 import faker from 'faker/locale/de'
-import HighlightCard from '../components/HighlightCard'
+import { GetServerSideProps } from 'next'
+import Link from 'next/link'
+import React from 'react'
 
+import HighlightCard from '../components/HighlightCard'
 import { Company } from '../models/Company.model'
 
-export default function Index(): JSX.Element {
-  const [companies, setCompanies] = useState<Company[]>([])
-
-  useEffect(() => {
-    setCompanies(
-      Array.from({ length: 5 }, (_, i) => ({
-        id: `${i}`,
-        name: `${faker.company.companyName()} ${faker.company.companySuffix()}`,
-        department: `${faker.commerce.department()}`,
-        logo: `${faker.image.business(48, 48)}`,
-        address: `${faker.address.streetAddress(true)}`,
-        latlng: { lat: 0, lng: 0 },
-      }))
-    )
-  }, [])
-
+const Index = ({ companies }: { companies: Company[] }): JSX.Element => {
   return (
     <div>
       <div className="text-center">
@@ -52,4 +39,25 @@ export default function Index(): JSX.Element {
       </div>
     </div>
   )
+}
+
+export default Index
+
+export const getServerSideProps: GetServerSideProps<{
+  companies: Company[]
+}> = async () => {
+  const res = await axios.get(`${process.env.BASE_API_URL}/companies`)
+
+  const companies = (await res.data).slice(0, 5).map((c: Company) => {
+    return {
+      ...c,
+      logo: `${faker.image.business(48, 48)}`,
+    }
+  })
+
+  return {
+    props: {
+      companies,
+    },
+  }
 }

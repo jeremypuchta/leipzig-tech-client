@@ -7,7 +7,7 @@ const CompanyCardList = ({
   onItemClick,
 }: {
   companies: Company[]
-  onItemClick: (id: string) => void
+  onItemClick: (id: number) => void
 }): JSX.Element => {
   return (
     <div className="px-4">
