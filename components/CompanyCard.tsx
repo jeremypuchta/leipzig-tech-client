@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { Company } from '../models/Company.model'
 
 const CompanyCard = ({
@@ -10,17 +11,20 @@ const CompanyCard = ({
 }): JSX.Element => {
   return (
     <div
-      className="bg-gray-100 rounded shadow-xl flex items-center mb-8"
+      className="flex rounded-md shadow-md items-center p-4 my-4"
       onClick={() => onClick(company.id)}
       role="button"
       tabIndex={0}
     >
-      <img className="h-20 m-5" src="/leipzig-wappen.png" alt="Company Logo" />
-      <div className="">
-        <h2 className="text-md font-semibold sm:text-lg lg:text-2xl">
-          {company.name}
-        </h2>
-        <p className="text-md">{company.sector}</p>
+      <Image
+        src={`${company.logo}`}
+        alt="company logo"
+        width={48}
+        height={48}
+      />
+      <div className="ml-4">
+        <h2 className="font-semibold sm:text-lg lg:text-2xl">{company.name}</h2>
+        <p className="text-gray-500 italic">{company.sector}</p>
       </div>
     </div>
   )
