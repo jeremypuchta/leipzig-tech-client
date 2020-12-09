@@ -9,7 +9,7 @@ import { Company } from '../models/Company.model'
 
 const Index = ({ companies }: { companies: Company[] }): JSX.Element => {
   return (
-    <div>
+    <div className="max-w-5xl mx-auto">
       <div className="text-center">
         <h2 className="text-4xl font-extrabold tracking-tight text-gray-900">
           Find your place in the tech community of Leipzig.
