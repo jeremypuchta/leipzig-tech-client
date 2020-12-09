@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300;400;500;600;700&display=swap');
 @import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+@import url('https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css');
 
 .leaflet-container {
   @apply rounded;
