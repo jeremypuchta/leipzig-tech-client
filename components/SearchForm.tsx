@@ -1,6 +1,4 @@
 import React, { SyntheticEvent, useState } from 'react'
-import Select, { ValueType } from 'react-select'
-import axios from 'axios'
 
 interface District {
   value: string
@@ -53,18 +51,6 @@ export default function SearchForm(setFilteredCompanies: any): JSX.Element {
           onChange={handleCompanyNameChange}
           name="name"
           placeholder="Company Name"
-        />
-        <Select
-          className="w-full mx-4"
-          instanceId="select-react"
-          value={selectedDistricts}
-          name="district"
-          options={options}
-          styles={customStyles}
-          placeholder="City Districts..."
-          onChange={handleDistrictSelectionChange}
-          isMulti
-          isSearchable
         />
         <button
           type="submit"
