@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "faker": "^5.1.0",
+    "formik": "^2.2.6",
     "install": "^0.13.0",
     "leaflet": "^1.7.1",
     "next": "10.0.1",
