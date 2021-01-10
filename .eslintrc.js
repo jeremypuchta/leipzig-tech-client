@@ -46,5 +46,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
+    'react-hooks/exhaustive-deps': 0,
   },
 }

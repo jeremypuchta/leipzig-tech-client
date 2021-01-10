@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Marker, Popup } from 'react-leaflet'
+import { Marker, Popup, useMap } from 'react-leaflet'
 
 import { Company } from '../models/Company.model'
 
@@ -10,9 +10,11 @@ const CompanyMarker = ({
   company: Company
   openPopup: boolean
 }): JSX.Element => {
+  const mapRef = useMap()
   const markerRef = useRef<any>(null)
   useEffect(() => {
     if (markerRef && markerRef.current && openPopup) {
+      mapRef.setView([company.latitude, company.longitude], 25)
       markerRef.current.openPopup()
     }
   }, [openPopup])
