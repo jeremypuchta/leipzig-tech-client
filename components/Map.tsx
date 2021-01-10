@@ -16,7 +16,7 @@ const LocationMap = ({
       <MapContainer
         center={[51.343479, 12.387772]}
         zoom={12}
-        scrollWheelZoom={false}
+        scrollWheelZoom
         style={{ width: '100%', height: '100%', zIndex: 0 }}
       >
         <TileLayer
