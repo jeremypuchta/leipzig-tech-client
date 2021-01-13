@@ -21,6 +21,10 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      borderWidth: ['hover', 'focus'],
+    },
+  },
   plugins: [],
 }
