@@ -14,7 +14,7 @@ const PointsLayer = ({
   return (
     // @ts-ignore
     <MarkerClusterGroup
-      spiderfyDistanceMultiplier={1}
+      spiderfyDistanceMultiplier={100}
       showCoverageOnHover={false}
     >
       {companies.map((item) => (

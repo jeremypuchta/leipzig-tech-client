@@ -16,12 +16,12 @@ const LocationMap = ({
       <MapContainer
         center={[51.343479, 12.387772]}
         zoom={12}
-        scrollWheelZoom={false}
+        scrollWheelZoom
         style={{ width: '100%', height: '100%', zIndex: 0 }}
       >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=kx4t8g88j04e7aXL6BZnYkAQW193L09J15EYmCEUxEJ0NM2EhQcvYcuyFR4LqAyC"
+          attribution='<a href="https://www.jawg.io" target="_blank">&copy; Jawg</a> - <a href="https://www.openstreetmap.org" target="_blank">&copy; OpenStreetMap</a>&nbsp;contributors'
         />
         <PointsLayer selectedId={selected} companies={companies} />
       </MapContainer>
