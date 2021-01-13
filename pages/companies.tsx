@@ -17,6 +17,7 @@ const CompaniesPage = ({
 }: {
   companies: Company[]
 }): JSX.Element => {
+  const [companyList, setCompanyList] = useState<Company[]>(companies)
   const [selected, setSelected] = useState<number>(0)
 
   const handleItemClick = (id: number) => {
@@ -33,12 +34,14 @@ const CompaniesPage = ({
               name: values.name,
             },
           })
-
-          {
-            /*
-           TODO: Calling the API works and the response is correct as well (see Network Tab in Browser). How to update the list of companies?
-           */
-          }
+          setCompanyList(
+            res.data.map((c: Company) => {
+              return {
+                ...c,
+                logo: `${faker.image.business(48, 48)}`,
+              }
+            })
+          )
         }}
       >
         {({ values, handleSubmit, handleChange }) => (
@@ -67,12 +70,12 @@ const CompaniesPage = ({
       <div className="flex h-content">
         <div className="w-full h-full overflow-auto">
           <CompanyCardList
-            companies={companies}
+            companies={companyList}
             onItemClick={handleItemClick}
           />
         </div>
         <div className="w-full h-full px-4 custom-scroll">
-          <LocationMap companies={companies} selected={selected} />
+          <LocationMap companies={companyList} selected={selected} />
         </div>
       </div>
     </div>
