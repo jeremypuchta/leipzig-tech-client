@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet'
-import { GeoJsonObject } from 'geojson'
+
 import { Company } from '../models/Company.model'
-import PointsLayer from './PointsLayer'
 import jsonData from '../public/ot.json'
+import PointsLayer from './PointsLayer'
 
 const LocationMap = ({
   companies,
@@ -12,8 +12,6 @@ const LocationMap = ({
   companies: Company[]
   selected: number
 }): JSX.Element => {
-  console.log(jsonData)
-
   return (
     <div className="h-full">
       <MapContainer
@@ -38,9 +36,7 @@ const LocationMap = ({
             fillOpacity: 0.25,
           }}
           eventHandlers={{
-            click: (e) => {
-              console.log(e)
-            },
+            click: (e) => {},
           }}
         />
       </MapContainer>
