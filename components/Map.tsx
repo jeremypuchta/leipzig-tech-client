@@ -1,8 +1,9 @@
-import React from 'react'
-import { MapContainer, TileLayer } from 'react-leaflet'
-
+import React, { useEffect, useState } from 'react'
+import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet'
+import { GeoJsonObject } from 'geojson'
 import { Company } from '../models/Company.model'
 import PointsLayer from './PointsLayer'
+import jsonData from '../public/ot.json'
 
 const LocationMap = ({
   companies,
@@ -11,6 +12,8 @@ const LocationMap = ({
   companies: Company[]
   selected: number
 }): JSX.Element => {
+  console.log(jsonData)
+
   return (
     <div className="h-full">
       <MapContainer
@@ -24,6 +27,22 @@ const LocationMap = ({
           attribution='<a href="https://www.jawg.io" target="_blank">&copy; Jawg</a> - <a href="https://www.openstreetmap.org" target="_blank">&copy; OpenStreetMap</a>&nbsp;contributors'
         />
         <PointsLayer selectedId={selected} companies={companies} />
+        <GeoJSON
+          key={+new Date()}
+          data={jsonData as any}
+          style={{
+            fillColor: 'blue',
+            weight: 2,
+            opacity: 1,
+            color: 'yellow',
+            fillOpacity: 0.25,
+          }}
+          eventHandlers={{
+            click: (e) => {
+              console.log(e)
+            },
+          }}
+        />
       </MapContainer>
     </div>
   )

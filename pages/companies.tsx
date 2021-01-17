@@ -87,17 +87,17 @@ export default CompaniesPage
 export const getServerSideProps: GetServerSideProps<{
   companies: Company[]
 }> = async () => {
-  const res = await axios.get(`${process.env.BASE_API_URL}/companies`)
-  const companies = (await res.data).map((c: Company) => {
-    return {
-      ...c,
-      logo: `${faker.image.business(48, 48)}`,
-    }
-  })
+  //   const res = await axios.get(`${process.env.BASE_API_URL}/companies`)
+  //   const companies = (await res.data).map((c: Company) => {
+  //     return {
+  //       ...c,
+  //       logo: `${faker.image.business(48, 48)}`,
+  //     }
+  //   })
 
   return {
     props: {
-      companies,
+      companies: [],
     },
   }
 }
