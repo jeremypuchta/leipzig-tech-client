@@ -4,9 +4,11 @@ import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
 
 import * as faker from 'faker'
-import { Formik } from 'formik'
+import { Formik, Field } from 'formik'
+
 import CompanyCardList from '../components/CompanyCardList'
 import { Company } from '../models/Company.model'
+import SelectField from '../components/SelectField'
 
 const LocationMap = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -20,6 +22,12 @@ const CompaniesPage = ({
   const [companyList, setCompanyList] = useState<Company[]>(companies)
   const [selected, setSelected] = useState<number>(0)
 
+  const sectorOptions = [
+    { value: 'consulting', label: 'IT-Consulting' },
+    { value: 'edv', label: 'EDV' },
+    { value: 'hardware', label: 'Hardware' },
+  ]
+
   const handleItemClick = (id: number) => {
     setSelected(id)
   }
@@ -27,11 +35,13 @@ const CompaniesPage = ({
   return (
     <div>
       <Formik
-        initialValues={{ name: '' }}
+        initialValues={{ name: '', sectors: [] }}
         onSubmit={async (values) => {
           const res = await axios.get(`${process.env.BASE_API_URL}/companies`, {
             params: {
-              name: values.name,
+              name: values.name ? values.name : undefined,
+              sectors:
+                values.sectors.length > 0 ? `${values.sectors}` : undefined,
             },
           })
           setCompanyList(
@@ -57,6 +67,12 @@ const CompaniesPage = ({
               value={values.name}
               placeholder="Company Name"
               className="w-11/12 p-2 rounded border border-blue-400 focus:border-2"
+            />
+            <SelectField
+              name="sectors"
+              options={sectorOptions}
+              iid="sector-select"
+              isMulti
             />
             <button
               type="submit"
