@@ -27,7 +27,7 @@ const SelectField: React.FC<ReactSelectProps & FieldProps> = ({
     <Select
       className={className}
       isMulti
-      options={props.options}
+      options={options}
       name={field.name}
       onChange={(option: Option) =>
         setValue(option ? option.map((s) => s.value) : [])
