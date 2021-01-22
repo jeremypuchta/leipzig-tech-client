@@ -4,11 +4,12 @@ import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
 
 import * as faker from 'faker'
-import { Formik } from 'formik'
+import { Formik, Field } from 'formik'
 
 import CompanyCardList from '../components/CompanyCardList'
 import { Company } from '../models/Company.model'
 import SelectField from '../components/SelectField'
+import CaseSensitiveSwitch from '../components/CaseSensitiveSwitch'
 
 const LocationMap = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -106,8 +107,9 @@ const CompaniesPage = ({
   return (
     <div>
       <Formik
-        initialValues={{ name: '', sectors: [], districts: [] }}
+        initialValues={{ name: '', sectors: [], districts: [], case: false }}
         onSubmit={async (values) => {
+          console.log(values)
           const res = await axios.get(`${process.env.BASE_API_URL}/companies`, {
             params: {
               name: values.name ? values.name : undefined,
@@ -115,6 +117,7 @@ const CompaniesPage = ({
                 values.sectors.length > 0 ? `${values.sectors}` : undefined,
               districts:
                 values.districts.length > 0 ? `${values.districts}` : undefined,
+              case: values.case ? `${values.case}` : undefined,
             },
           })
           setCompanyList(
@@ -132,15 +135,21 @@ const CompaniesPage = ({
             onSubmit={handleSubmit}
             className="flex shadow p-4 m-4 justify-between items-center"
           >
-            <input
-              id="name"
-              name="name"
-              type="text"
-              onChange={handleChange}
-              value={values.name}
-              placeholder="Company Name"
-              className="w-11/12 p-2 rounded border border-blue-400"
-            />
+            <div className="w-11/12 p-2 rounded border border-blue-400">
+              <input
+                id="name"
+                name="name"
+                type="text"
+                onChange={handleChange}
+                value={values.name}
+                placeholder="Company Name"
+              />
+              <Field
+                onChange={handleChange}
+                component={CaseSensitiveSwitch}
+                name="case"
+              />
+            </div>
             <SelectField
               className="w-full mx-2 rounded border border-blue-400"
               name="sectors"
