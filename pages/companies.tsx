@@ -109,7 +109,6 @@ const CompaniesPage = ({
       <Formik
         initialValues={{ name: '', sectors: [], districts: [], case: false }}
         onSubmit={async (values) => {
-          console.log(values)
           const res = await axios.get(`${process.env.BASE_API_URL}/companies`, {
             params: {
               name: values.name ? values.name : undefined,
