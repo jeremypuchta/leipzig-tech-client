@@ -134,8 +134,9 @@ const CompaniesPage = ({
             onSubmit={handleSubmit}
             className="flex shadow p-4 m-4 justify-between items-center"
           >
-            <div className="w-11/12 p-2 rounded border border-blue-400">
+            <div className="w-11/12 p-2 rounded border border-blue-400 flex">
               <input
+                className="flex-1 mr-2"
                 id="name"
                 name="name"
                 type="text"
