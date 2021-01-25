@@ -23,10 +23,14 @@ const CompaniesPage = ({
   const [companyList, setCompanyList] = useState<Company[]>(companies)
   const [selected, setSelected] = useState<number>(0)
 
-  const sectorOptions = companies.map((c) => ({
-    value: c.sector.toLowerCase(),
-    label: c.sector,
-  }))
+  const sectorOptions = companies
+    .map((c) => c.sector)
+    .filter((v, i, a) => a.findIndex((t) => t === v) === i)
+    .sort()
+    .map((c) => ({
+      value: c.toLowerCase(),
+      label: c,
+    }))
   const districtOptions = [
     { value: 'mitte', label: 'Mitte' },
     { value: 'zentrum', label: 'Zentrum' },
