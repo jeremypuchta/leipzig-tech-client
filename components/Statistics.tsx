@@ -57,7 +57,7 @@ export default function Statistics({
 
   return (
     <div
-      className={`w-full h-36 rounded-xl grid grid-cols-${randomStats.length} gap-4 text-center shadow-xl mb-24`}
+      className={`w-full p-4 rounded-xl grid grid-cols-${randomStats.length} gap-4 text-center shadow-xl mb-24`}
     >
       {getAllStatistics()}
     </div>
