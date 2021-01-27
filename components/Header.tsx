@@ -18,17 +18,7 @@ const Header = (): JSX.Element => {
               type="button"
               className="px-4 py-2 rounded shadow text-black hover:bg-blue-800 hover:text-white"
             >
-              Search
-            </button>
-          </a>
-        </Link>
-        <Link href="/about">
-          <a>
-            <button
-              type="button"
-              className="px-4 py-2 rounded shadow text-black hover:bg-blue-800 hover:text-white"
-            >
-              About
+              Companies
             </button>
           </a>
         </Link>
