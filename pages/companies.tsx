@@ -111,15 +111,14 @@ const CompaniesPage = ({
   return (
     <div>
       <Formik
-        initialValues={{ name: '', sectors: [], districts: [], case: false }}
+        initialValues={{ name: '', sector: [], district: [], case: false }}
         onSubmit={async (values) => {
           const res = await axios.get(`${process.env.BASE_API_URL}/companies`, {
             params: {
               name: values.name ? values.name : undefined,
-              sectors:
-                values.sectors.length > 0 ? `${values.sectors}` : undefined,
-              districts:
-                values.districts.length > 0 ? `${values.districts}` : undefined,
+              sector: values.sector.length > 0 ? `${values.sector}` : undefined,
+              district:
+                values.district.length > 0 ? `${values.district}` : undefined,
               case: values.case ? `${values.case}` : undefined,
             },
           })
@@ -156,7 +155,7 @@ const CompaniesPage = ({
             </div>
             <SelectField
               className="w-full mx-2 rounded border border-blue-400"
-              name="sectors"
+              name="sector"
               options={sectorOptions}
               iid="sector-select"
               isMulti
@@ -164,7 +163,7 @@ const CompaniesPage = ({
             />
             <SelectField
               className="w-full mr-2 rounded border border-blue-400"
-              name="districts"
+              name="district"
               options={districtOptions}
               iid="district-select"
               isMulti
