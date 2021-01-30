@@ -1,10 +1,10 @@
-import axios from 'axios'
+import React, { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
-
+import axios from 'axios'
 import * as faker from 'faker'
 import { Formik, Field } from 'formik'
+import { VscClose } from 'react-icons/vsc'
 
 import CompanyCardList from '../components/CompanyCardList'
 import { Company } from '../models/Company.model'
@@ -132,7 +132,7 @@ const CompaniesPage = ({
           )
         }}
       >
-        {({ values, handleSubmit, handleChange }) => (
+        {({ values, handleSubmit, handleChange, setFieldValue }) => (
           <form
             onSubmit={handleSubmit}
             className="flex shadow p-4 m-4 justify-between items-center"
@@ -147,6 +147,16 @@ const CompaniesPage = ({
                 value={values.name}
                 placeholder="Company Name"
               />
+              {values.name.length > 0 ? (
+                <button
+                  type="reset"
+                  onClick={() => setFieldValue('name', '')}
+                  className="text-xl text-gray-400 mx-1 hover:text-black"
+                >
+                  <VscClose />
+                </button>
+              ) : null}
+
               <Field
                 onChange={handleChange}
                 component={CaseSensitiveSwitch}
