@@ -35,6 +35,7 @@ const SelectField: React.FC<ReactSelectProps & FieldProps> = ({
       instanceId={iid}
       placeholder={placeholder}
       styles={style}
+      isClearable
     />
   )
 }
