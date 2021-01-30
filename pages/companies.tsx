@@ -10,7 +10,6 @@ import CompanyCardList from '../components/CompanyCardList'
 import { Company } from '../models/Company.model'
 import SelectField from '../components/SelectField'
 import CaseSensitiveSwitch from '../components/CaseSensitiveSwitch'
-import ResetButton from '../components/ResetButton'
 
 const LocationMap = dynamic(() => import('../components/Map'), {
   ssr: false,
