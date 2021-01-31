@@ -3,8 +3,6 @@ function getEnv() {
     return {
       PRODUCTION: false,
       BASE_API_URL: 'http://localhost:8080',
-      GITHUB_SECRET: process.env.GITHUB_SECRET,
-      GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
       JAWG_TOKEN: process.env.JAWG_TOKEN,
     }
   }
@@ -12,8 +10,6 @@ function getEnv() {
   return {
     PRODUCTION: true,
     BASE_API_URL: 'http://localhost:8080',
-    GITHUB_SECRET: process.env.GITHUB_SECRET,
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     JAWG_TOKEN: process.env.JAWG_TOKEN,
   }
 }
