@@ -6,12 +6,12 @@ import * as faker from 'faker'
 import { Formik, Field } from 'formik'
 import { VscClose } from 'react-icons/vsc'
 
-import CompanyCardList from '../components/CompanyCardList'
-import { Company } from '../models/Company.model'
-import SelectField from '../components/SelectField'
-import CaseSensitiveSwitch from '../components/CaseSensitiveSwitch'
+import CompanyCardList from '../../components/CompanyCardList'
+import { Company } from '../../models/Company.model'
+import SelectField from '../../components/SelectField'
+import CaseSensitiveSwitch from '../../components/CaseSensitiveSwitch'
 
-const LocationMap = dynamic(() => import('../components/Map'), {
+const LocationMap = dynamic(() => import('../../components/Map'), {
   ssr: false,
 })
 
