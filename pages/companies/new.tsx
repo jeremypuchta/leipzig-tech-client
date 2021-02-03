@@ -1,15 +1,18 @@
+import { useKeycloak } from '@react-keycloak/ssr'
 import axios from 'axios'
 import { Formik } from 'formik'
-import { useKeycloak } from '@react-keycloak/ssr'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
 const NewCompanyPage = (): JSX.Element => {
   const { keycloak, initialized } = useKeycloak()
+  const router = useRouter()
+
   return (
     <div>
       <Formik
         initialValues={{
-          ref: 'test',
+          ref: 'registration',
           name: '',
           sector: '',
           address: '',
@@ -18,16 +21,15 @@ const NewCompanyPage = (): JSX.Element => {
           phonenumber: '',
           website: '',
           email: '',
-          source: 'self'
+          source: 'self',
         }}
         onSubmit={async (values) => {
-          const headers = {
-            'Authorization' : keycloak.token
-          }
           const res = await axios.post(
             `${process.env.BASE_API_URL}/auth/companies`,
-            values, {headers}
+            values,
+            {}
           )
+          router.push('/')
         }}
       >
         {({ values, handleSubmit, handleChange, setFieldValue }) => (
