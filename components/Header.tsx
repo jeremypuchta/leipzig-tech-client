@@ -2,6 +2,7 @@ import { Transition } from '@headlessui/react'
 import { useKeycloak } from '@react-keycloak/ssr'
 import { KeycloakInstance } from 'keycloak-js'
 import Link from 'next/link'
+import Image from 'next/image'
 import React, { useState } from 'react'
 
 const Header = (): JSX.Element => {
@@ -66,10 +67,12 @@ const Header = (): JSX.Element => {
               onBlur={() => setIsOn(false)}
             >
               <span className="sr-only">Open user menu</span>
-              <img
-                className="h-8 w-8 rounded-full"
-                src="icons/user-solid.svg"
-                alt=""
+              <Image
+                className="rounded-full"
+                src="/icons/user-solid.svg"
+                alt="foo"
+                width={36}
+                height={36}
               />
             </button>
             <Transition
@@ -82,7 +85,7 @@ const Header = (): JSX.Element => {
               leaveTo="transform opacity-0 scale-95"
             >
               <div
-                className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="user-menu"
@@ -99,6 +102,14 @@ const Header = (): JSX.Element => {
                 >
                   Profile
                 </button>
+                <Link href="/companies/new">
+                  <a
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                  >
+                    Register Company
+                  </a>
+                </Link>
 
                 <button
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"

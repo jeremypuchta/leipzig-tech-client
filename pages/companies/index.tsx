@@ -6,12 +6,12 @@ import * as faker from 'faker'
 import { Formik, Field } from 'formik'
 import { VscClose } from 'react-icons/vsc'
 
-import CompanyCardList from '../components/CompanyCardList'
-import { Company } from '../models/Company.model'
-import SelectField from '../components/SelectField'
-import CaseSensitiveSwitch from '../components/CaseSensitiveSwitch'
+import CompanyCardList from '../../components/CompanyCardList'
+import { Company } from '../../models/Company.model'
+import SelectField from '../../components/SelectField'
+import CaseSensitiveSwitch from '../../components/CaseSensitiveSwitch'
 
-const LocationMap = dynamic(() => import('../components/Map'), {
+const LocationMap = dynamic(() => import('../../components/Map'), {
   ssr: false,
 })
 
@@ -208,7 +208,7 @@ export default CompaniesPage
 export const getServerSideProps: GetServerSideProps<{
   companies: Company[]
 }> = async () => {
-  const res = await axios.get(`${process.env.BASE_API_URL}/companies`)
+  const res = await axios.get(`${process.env.BASE_API_URL}/companies?sort=desc`)
   const companies = (await res.data).map((c: Company) => {
     return {
       ...c,

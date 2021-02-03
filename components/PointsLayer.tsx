@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import MarkerClusterGroup from 'react-leaflet-markercluster'
 
 import { Company } from '../models/Company.model'
@@ -14,7 +14,7 @@ const PointsLayer = ({
   return (
     // @ts-ignore
     <MarkerClusterGroup
-      spiderfyDistanceMultiplier={100}
+      spiderfyDistanceMultiplier={0.9}
       showCoverageOnHover={false}
     >
       {companies.map((item) => (
